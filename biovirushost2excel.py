@@ -21,11 +21,16 @@ lines = taxlist.readlines()
 
 #pass lines to BioVirusHost.v_tax_search parameter
 for line in lines:
-    for i_result in BioVirusHost.v_tax_search([line]):
-        df_list.append(pd.DataFrame(i_result))
-        #print(df)
+    try:
+        for i_result in BioVirusHost.v_tax_search([line]):
+            print(line)
+            df_list.append(pd.DataFrame(data=i_result))
+    except:
+        pass
+
 
 df = pd.concat(df_list)
+print(df)
 
 #Write dataframe in a pretty Excel worksheet
 writer = pd.ExcelWriter('biovirushost.xlsx', engine='xlsxwriter')
