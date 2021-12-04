@@ -32,10 +32,11 @@ writer = pd.ExcelWriter('biovirushost.xlsx', engine='xlsxwriter')
 df.to_excel(writer, sheet_name='Sheet1', index=False)
 workbook=writer.book
 worksheet = writer.sheets['Sheet1']
-    
+
+#wrap text, center horizontal and vertical
 format = workbook.add_format({'text_wrap': True, 'center_across': True, 'align': 'center','valign': 'vcenter'}) #wrap text
 
-# Setting the format but not setting the column width.
+# Column width=30
 worksheet.set_column('A:E', 30, format)
 writer.save()
             
@@ -44,4 +45,4 @@ writer.save()
             
             
             
-#I like to skip bottom lines :)            
+            
